@@ -1,0 +1,27 @@
+# Token GitHub - NUNCA commitar
+.github-token
+*.token
+
+# Node modules (se houver)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporários
+*.tmp
+.cache/

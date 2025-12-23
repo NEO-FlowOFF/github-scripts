@@ -1,0 +1,106 @@
+# Scripts de Gerenciamento GitHub - NEO-FlowOFF
+
+## Contexto do Projeto
+
+Este projeto contém scripts automatizados para gerenciar repositórios GitHub, incluindo transferências entre contas e organizações.
+
+## Scripts Disponíveis
+
+### transfer-repos.js
+Script principal para transferir repositórios do perfil pessoal `neomello` para a organização `NEO-FlowOFF`.
+
+**Funcionalidades:**
+- Verifica automaticamente se repositórios já foram transferidos
+- Suporta múltiplos repositórios em lote
+- Exibe progresso em tempo real
+- Gera relatório final detalhado
+
+**Configuração:**
+- Token GitHub salvo em `~/.github-token` (formato: `GITHUB_TOKEN=token_aqui`)
+- Também aceita variável de ambiente `GITHUB_TOKEN` ou `GITHUB_PAT`
+- Permissões necessárias: `repo` e `admin:org`
+
+**Repositórios gerenciados:**
+- flwff_dao
+- flowcloser-agent
+- flowpay_lite
+- flowcloser
+- flowpay_landing
+- agent-neo-flowoff
+- flow25
+- evolution-flow
+- flowoffmkt
+
+### check-github-access.js
+Script de diagnóstico para verificar:
+- Validade do token de autenticação
+- Permissões do token
+- Acesso à organização NEO-FlowOFF
+- Status dos repositórios
+
+## Configuração
+
+### Token GitHub
+O token está configurado em:
+- Arquivo: `~/.github-token` (formato: `GITHUB_TOKEN=ghp_...`)
+- Variável de ambiente: `GITHUB_TOKEN` ou `GITHUB_PAT`
+- Adicionado ao `~/.zshrc` para persistência
+
+### Permissões Necessárias
+- `repo` - Acesso completo aos repositórios
+- `admin:org` - Administração de organizações
+
+## Estrutura de Arquivos
+
+```
+~/scripts-github/
+├── .cursorrules              # Este arquivo
+├── README.md                 # Documentação principal
+├── TRANSFER_REPOS_README.md   # Guia detalhado
+├── transfer-repos.js         # Script principal
+├── check-github-access.js    # Script de diagnóstico
+└── .github-token             # Token (não versionado, chmod 600)
+```
+
+## Comandos Úteis
+
+```bash
+# Executar transferência
+node transfer-repos.js
+
+# Verificar acesso
+node check-github-access.js
+
+# Verificar token
+cat ~/.github-token
+```
+
+## Organização
+
+- **Origem**: `neomello` (perfil pessoal)
+- **Destino**: `NEO-FlowOFF` (organização)
+
+## Status Atual
+
+Todos os 9 repositórios foram transferidos com sucesso para a organização NEO-FlowOFF.
+
+## Notas Importantes
+
+- ⚠️ Nunca commite o arquivo `.github-token`
+- ⚠️ O token tem permissões administrativas - mantenha seguro
+- ✅ Scripts verificam automaticamente se repositórios já foram transferidos
+- ✅ Scripts incluem tratamento de erros e rate limiting
+
+## Tecnologias
+
+- Node.js (versão 14+)
+- GitHub REST API
+- HTTPS nativo do Node.js
+
+## Padrões de Código
+
+- Código funcional quando possível
+- Tratamento de erros robusto
+- Mensagens de log claras e informativas
+- Suporte a múltiplas fontes de configuração (arquivo, env vars)
+
